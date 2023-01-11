@@ -1,11 +1,10 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-
+<h1>Users</h1>
 <ul>
   <% @users.each do |user| %>
     <li>
       <%= user.user_name %>
       <%= user.user_age%>
+      <%=user.email%>
     </li>
   <% end %>
 </ul>
