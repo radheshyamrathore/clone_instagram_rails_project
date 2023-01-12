@@ -1,11 +1,11 @@
-<h1><%= @users.user_name %></h1>
+<h1><%= @user.user_name %></h1>
 
-<p><%= @users.user_age %></p>
-<p><%=@users.email %></p>
-<p><%=@users.posts %></p>
+<p><%= @user.user_age %></p>
+<p><%=@user.email %></p>
+<p><%=@user.posts %></p>
 <ul>
-  <li><%= link_to "Edit", edit_user_path(@users) %></li>
-  <li><%= link_to "Destroy", user_path(@users), data: {
+  <li><%= link_to "Edit", edit_user_path(@user) %></li>
+  <li><%= link_to "Destroy", user_path(@user), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure for delete?"
                   } %></li>
