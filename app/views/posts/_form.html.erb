@@ -1,0 +1,19 @@
+<%= form_with url: user_posts_path(@user_id), model: @post do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_field :body %>
+     <% @post.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :post_type %><br>
+    <%= form.text_area :post_type %>
+    <% @post.errors.full_messages_for(:post_type).each do |message| %>
+      <div><%= message %></div>
+      <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
