@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
+  #has_one_attached :video
+  #has_one_attached :image
   has_many :comments
   has_many :likes
-  validates :body, presence: true
-  validates :post_type, presence:true
+  enum post_type:[:image,:video]
 end

@@ -1,17 +1,17 @@
 
 <%= form_with model: user do |form| %>
   <div>
-    <%= form.label :user_name %><br>
-    <%= form.text_field :user_name %>
-     <% @user.errors.full_messages_for(:user_name).each do |message| %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+     <% @user.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :user_age %><br>
-    <%= form.text_area :user_age %>
-    <% @user.errors.full_messages_for(:user_age).each do |message| %>
+    <%= form.label :age %><br>
+    <%= form.text_area :age %>
+    <% @user.errors.full_messages_for(:age).each do |message| %>
       <div><%= message %></div>
       <% end %>
   </div>
