@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
     if @user.save
-      flash[:notice]="Signup successfull"
+      flash[:notice] = "Signup successfull"
       redirect_to @user
     else
-      flash[:notice]="Please try again"
+      flash[:notice] = "Please try again"
       redirect_to '/signup'
       #render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :age, :password, :email)
-    end
+  def user_params
+    params.require(:user).permit(:name, :age, :password, :email)
+  end
 end

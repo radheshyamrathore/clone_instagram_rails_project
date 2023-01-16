@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  root "posts#index"
+   root "posts#index"
   # get 'sessions/new'
   # get 'sessions/create'
   # get 'sessions/destroy'
+  resources :users 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  resources :users do
-    resources :posts 
 
-  #get '/' => 'user#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  resources :posts do
+      resources :comments
+  end
 end
