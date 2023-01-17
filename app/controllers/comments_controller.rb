@@ -1,17 +1,17 @@
-class CommentsController < ApplicationController
-
+# frozen_string_literal: true
+class CommentsController < ApplicationController # rubocop:disable Style/Documentation
   def new 
     @comment = Comment.new 
   end 
 
   def create
     @post = Post.find_by_id(params[:post_id])
-    #@post = Post.find(params[:post_id])
+    # @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comments_params.merge(user_id: current_user.id))
     redirect_to post_path(@post)
-    end 
-    # @comment = current_user.comments.create(comment_params)
-    # redirect_to post_path(@comment.post)
+  end 
+  # @comment = current_user.comments.create(comment_params)
+  # redirect_to post_path(@comment.post)
 
   def destroy
     # @post = Post.find(params[:post_id])
@@ -22,7 +22,9 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to post_path(@comment.post)
   end
+
   private
+
   def comments_params
     params.require(:comment).permit(:commenter, :body)
   end

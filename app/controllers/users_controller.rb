@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController # rubocop:disable Style/Documentation
   def index
     @users = User.all
   end
@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     @user=User.new(user_params)
     if @user.save
       flash[:notice] = "Signup successfull"
-      redirect_to @user
+      redirect_to '/posts'
     else
       flash[:notice] = "Please try again"
       redirect_to '/signup'
-      #render :new, status: :unprocessable_entity
+      # render :new, status: :unprocessable_entity
     end
   end
 
@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :age, :password, :email)
   end

@@ -1,4 +1,10 @@
 <h1>Users Post</h1>
+<%= link_to "login",login_path %><br>
+<li> <%= link_to "logout",logout_path %><br>
+
+<%= link_to "New Post", new_post_path %></li>
+Our blog has <%= @posts.count %> posts
+
 <ul>
   <% @posts.each do |post| %>
     <li>
@@ -6,16 +12,5 @@
       <%= post.body %><br>
       <%= post.post_type%><br>
     </li>
- <%
-=begin%>
- <li><%= @user.name %></li> 
-<%
-=end%>
 <% end %>
 </ul>
-
-<%
-=begin%>
- <%= link_to "New Post", new_user_post_path %> 
-<%
-=end%>
