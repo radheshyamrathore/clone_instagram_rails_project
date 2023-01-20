@@ -19,7 +19,7 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
     else
       flash[:notice] = "Please try again"
       redirect_to '/signup'
-      # render :new, status: :unprocessable_entity
+       render :new, status: :unprocessable_entity
     end
   end
 

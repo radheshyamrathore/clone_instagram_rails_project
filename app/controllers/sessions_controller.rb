@@ -18,6 +18,7 @@ class SessionsController < ApplicationController # rubocop:disable Style/Documen
   end
 
   def destroy
+    session.delete(:user_id)
     session[:user_id] = nil
     flash[:notice] = 'Logged Out'
     redirect_to '/login'

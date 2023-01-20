@@ -4,11 +4,14 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   def index
     @posts = Post.all
     return unless session[:user_id]
-
     @user = User.find_by(id: session[:user_id])
   end
 
   def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
     @post = Post.find(params[:id])
   end
 
@@ -28,10 +31,20 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
     end
   end
 
+  def update
+    @user = User.find(session[:user_id]) if session[:user_id]
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to @user
+    redirect_to posts_path
     # redirect_to root_path, status: :see_other
   end
 

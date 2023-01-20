@@ -1,8 +1,9 @@
 <h1>Users Post</h1>
 <%= link_to "login",login_path %><br>
 <li> <%= link_to "logout",logout_path %><br>
-
-<%= link_to "New Post", new_post_path %></li>
+<%if @user != nil%>
+  <%= link_to "New Post", new_post_path %></li>
+<%end%>
 Our blog has <%= @posts.count %> posts
 
 <ul>
