@@ -28,7 +28,6 @@ class CommentsController < ApplicationController # rubocop:disable Style/Documen
 
 
   def destroy
-    debugger
     @post = Post.find(params[:post_id])
     @comment = Comment.find_by(params[:id])
     @comment.destroy

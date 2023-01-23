@@ -7,10 +7,12 @@
 
  <li><%= link_to "Edit", edit_post_path %></li> 
 
-  <li><%= link_to "Destroy", post_path(@post), data: {
+  <li>
+  <%= link_to "Destroy", post_path(@post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure for delete post?"
-                  } %></li>
+                  } %>
+                  </li>
 </ul>
 
 <h2>Comments</h2>

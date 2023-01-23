@@ -1,4 +1,5 @@
 class UsersController < ApplicationController # rubocop:disable Style/Documentation
+  before_action :logged_in_user
   def index
     @users = User.all
   end
@@ -14,10 +15,10 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
   def create
     @user=User.new(user_params)
     if @user.save
-      flash[:notice] = "Signup successfull"
+      flash[:notice] = 'Signup successfull'
       redirect_to '/posts'
     else
-      flash[:notice] = "Please try again"
+      flash[:notice] = 'Please try again'
       redirect_to '/signup'
        render :new, status: :unprocessable_entity
     end
