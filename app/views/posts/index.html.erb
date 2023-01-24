@@ -12,6 +12,7 @@ Our blog has <%= @posts.count %> posts
        <%= link_to post.author_user, post %><br>
       <%= post.body %><br>
       <%= post.post_type%><br>
+      <%= post.acceptable_image %>
     </li>
 <% end %>
 </ul>

@@ -2,8 +2,7 @@
 <p><%= @post.post_type %></p>
 <p><%= @post.user_id %></p>
  <p><%= current_user.name %></p> 
- <%= image_tag event.image %>
- <%= image_tag video.video %>
+ <p><%= image_tag @post.image %></p>
 
  <% if @post.user_id == current_user.id %> 
  <li><%= link_to "Edit", edit_post_path %></li> 
@@ -34,7 +33,7 @@
                   turbo_confirm: "Are you sure?"
                 } %>
 <% end %>
-<% end %>
+ <% end %>
 
 <h2>Add a comment:</h2>
 <%= form_with model: [@post, @post.comments.build ] do |form| %>
