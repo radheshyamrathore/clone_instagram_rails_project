@@ -7,5 +7,10 @@ class Post < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :comments, dependent: :destroy
   has_many :likes
   enum post_type: %i[image video]
+  validate :acceptable_image
+
+  def acceptable_image
+    return unless image.attached?
+  end
 
 end

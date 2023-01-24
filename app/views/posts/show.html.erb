@@ -2,18 +2,18 @@
 <p><%= @post.post_type %></p>
 <p><%= @post.user_id %></p>
  <p><%= current_user.name %></p> 
+ <%= image_tag event.image %>
+ <%= image_tag video.video %>
 
-<ul>
-
+ <% if @post.user_id == current_user.id %> 
  <li><%= link_to "Edit", edit_post_path %></li> 
-
   <li>
   <%= link_to "Destroy", post_path(@post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure for delete post?"
                   } %>
                   </li>
-</ul>
+ <% end %>
 
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
@@ -26,11 +26,14 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+
+ <% if comment.user_id == current_user.id %> 
   <li><%= link_to "Edit", edit_post_comment_path(@post, comment) %></li>
    <%= link_to "Destroy Comment", post_comment_path(post_id:comment.post_id, id:comment.id), method: "delete" , data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
+<% end %>
 <% end %>
 
 <h2>Add a comment:</h2>
