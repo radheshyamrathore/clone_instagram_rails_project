@@ -1,13 +1,14 @@
- <h1><%= @post.body %></h1> 
+<h1><%= @post.body %></h1> 
 <p><%= @post.post_type %></p>
 <p><%= @post.user_id %></p>
- <p><%= current_user.name %></p> 
- <p><%= image_tag @post.image %></p>
+<p><%= current_user.name %></p> 
 
- <% if @post.user_id == current_user.id %> 
- <li><%= link_to "Edit", edit_post_path %></li> 
+<%= image_tag @post.image %>
+
+<% if @post.user_id == current_user.id %> 
+<li><%= link_to "Edit", edit_post_path %></li> 
   <li>
-  <%= link_to "Destroy", post_path(@post), data: {
+    <%= link_to "Destroy", post_path(@post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure for delete post?"
                   } %>
@@ -26,14 +27,14 @@
     <%= comment.body %>
   </p>
 
- <% if comment.user_id == current_user.id %> 
+<% if comment.user_id == current_user.id %> 
   <li><%= link_to "Edit", edit_post_comment_path(@post, comment) %></li>
    <%= link_to "Destroy Comment", post_comment_path(post_id:comment.post_id, id:comment.id), method: "delete" , data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
 <% end %>
- <% end %>
+<% end %>
 
 <h2>Add a comment:</h2>
 <%= form_with model: [@post, @post.comments.build ] do |form| %>
@@ -49,5 +50,4 @@
   <p>
     <%= form.submit %>
   </p>
-
 <% end %>

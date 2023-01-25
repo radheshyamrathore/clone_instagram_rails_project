@@ -13,7 +13,7 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def create
-    @user=User.new(user_params)
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'Signup successfull'
       redirect_to '/posts'

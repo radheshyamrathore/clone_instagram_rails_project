@@ -13,6 +13,7 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def edit
+    byebug
     @post = Post.find(params[:id])
   end
 
@@ -34,6 +35,7 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def update
+    byebug
     @user = User.find(session[:user_id]) if session[:user_id]
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -53,6 +55,6 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   private
 
   def post_params
-    params.require(:post).permit(:body, :post_type, :image, :video)
+    params.require(:post).permit(:body, :post_type, :image, :video, :user_id)
   end
 end

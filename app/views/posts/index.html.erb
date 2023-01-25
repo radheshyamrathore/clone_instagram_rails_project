@@ -1,18 +1,55 @@
 <h1>Users Post</h1>
+
+<% if current_user = nil %>
 <%= link_to "login",login_path %><br>
-<li> <%= link_to "logout",logout_path %><br>
-<%if @user != nil%>
-  <%= link_to "New Post", new_post_path %></li>
-<%end%>
+<% else current_user != nil %>
+
+<hr>
+      <%= link_to "logout",logout_path %>
+<hr>
+
+  <%= link_to "New Post", new_post_path %>
+  <%end%>
 Our blog has <%= @posts.count %> posts
 
-<ul>
+<table id="customers">
+  <center><tr>
+    <th style="background-color:#00FF00">Sr.no.</th>
+
+    <th style="background-color:#00FF00">Name</th>
+
+    <th style="background-color:#00FF00">description</th>
+    <th style="background-color:#00FF00">type</th>
+    <th>Action</th>
+
+
+  </tr></center>
+  <tr>
   <% @posts.each do |post| %>
-    <li>
-       <%= link_to post.author_user, post %><br>
-      <%= post.body %><br>
+    <td>
+
+    </td>
+    <td>
+        <%= post.author_user %><br>
+    </td>
+    <td>
+        <%= link_to post.body, post %><br>
+    </td>
+
+    <td>
       <%= post.post_type%><br>
-      <%= post.acceptable_image %>
-    </li>
+    </td>
+    <td>
+    <pre>
+    <% if post.user_id == @current_user.id %>
+    <%= link_to "Edit", edit_post_path(post) %> || <%= link_to "Destroy", post_path(post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure for delete post?"
+                  } %>
+    </pre>
+    </td>
+
 <% end %>
-</ul>
+    </tr>
+<% end %>
+</table>
