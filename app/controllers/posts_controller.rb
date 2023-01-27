@@ -13,7 +13,6 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def edit
-    byebug
     @post = Post.find(params[:id])
   end
 
@@ -23,7 +22,6 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
 
   def create
     @user = User.find(session[:user_id]) if session[:user_id]
-    # @user=User.find(params[:user_id])
     @post = Post.create(post_params)
     @post.user_id = @user.id
     @post.author_user = @user.name
@@ -35,7 +33,6 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def update
-    byebug
     @user = User.find(session[:user_id]) if session[:user_id]
     @post = Post.find(params[:id])
     if @post.update(post_params)

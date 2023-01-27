@@ -1,16 +1,19 @@
 class LikesController < ApplicationController
-    def create
-        @post = Post.likes.find_by(params[:post_id])
-        @like = @post.likes.find_by(user_id:current_user.id)
-        unless @like.present?
-            @post.likes.create(user_id:current_user.id)
-            @post.count = @post.count + 1
-            @post.save
-        end
-    else
-        @like.destroy
-        @post.count = @post.count-1
-        @post.save
-    end
-    end
+  def create
+    @post = Post.find_by_id(params[:post_id])
+    @like = @post.likes.create(likes_params.merge(user_id: current_user.id))
+    redirect_to post_path(@post)
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @like = Like.find_by(params[:id])
+    @like.destroy
+    redirect_to post_path(@post)
+  end
+
+  private  
+  def likes_params
+    params.require(:like).permit(:user)
+  end
 end

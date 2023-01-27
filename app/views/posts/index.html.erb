@@ -1,34 +1,50 @@
 <h1>Users Post</h1>
+<html>
+<head>
+</head>
+<body style="background-color:powderblue;">
 
 <% if current_user = nil %>
 <%= link_to "login",login_path %><br>
 <% else current_user != nil %>
 
+<h1 style="color:green;"> <%= @current_user.name %>  login successfully</h1>
 <hr>
       <%= link_to "logout",logout_path %>
 <hr>
 
+<hr>
   <%= link_to "New Post", new_post_path %>
-  <%end%>
+<hr>
+
+<%end%>
+
 Our blog has <%= @posts.count %> posts
-
-<table id="customers">
+<style>
+table{
+  width:100%;
+  text-align:center
+}
+</style>
+<table>
   <center><tr>
-    <th style="background-color:#00FF00">Sr.no.</th>
+    <th>Sr.no.</th>
 
-    <th style="background-color:#00FF00">Name</th>
+    <th>Name</th>
 
-    <th style="background-color:#00FF00">description</th>
-    <th style="background-color:#00FF00">type</th>
+    <th>description</th>
+    <th>type</th>
     <th>Action</th>
+    <th>like</th>
 
 
   </tr></center>
   <tr>
+  <% p=1 %>
   <% @posts.each do |post| %>
-    <td>
-
+    <td><%= p %>
     </td>
+    <%p+=1%>
     <td>
         <%= post.author_user %><br>
     </td>
@@ -50,6 +66,12 @@ Our blog has <%= @posts.count %> posts
     </td>
 
 <% end %>
-    </tr>
+
+<td>
+<button type="button" onclick="like">Click Me!</button>
+</td>
+</tr>
 <% end %>
 </table>
+</body>
+</html>
