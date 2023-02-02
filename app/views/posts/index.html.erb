@@ -10,11 +10,11 @@
 
 <h1 style="color:green;"> <%= @current_user.name %>  login successfully</h1>
 <hr>
-      <%= link_to "logout",logout_path %>
+      <%= link_to "logout",logout_path , {class:"btn btn-secondary"} %>
 <hr>
 
 <hr>
-  <%= link_to "New Post", new_post_path %>
+  <%= link_to "New Post", new_post_path, {class:"btn btn-primary"} %>
 <hr>
 
 <%end%>
@@ -26,7 +26,7 @@ table{
   text-align:center
 }
 </style>
-<table>
+<table class="table table-hover">
   <center><tr>
     <th>Sr.no.</th>
 
