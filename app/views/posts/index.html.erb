@@ -8,13 +8,10 @@
 <%= link_to "login",login_path %><br>
 <% else current_user != nil %>
 
-<h1 style="color:green;"> <%= @current_user.name %>  login successfully</h1>
-<hr>
-      <%= link_to "logout",logout_path , {class:"btn btn-secondary"} %>
-<hr>
+<h4 style="color:green;"> <%= @current_user.name %>  login successfully</h4>
 
 <hr>
-  <%= link_to "New Post", new_post_path, {class:"btn btn-primary"} %>
+  <%= link_to "New Post", new_post_path, {class:"btn btn-success"} %>
 <hr>
 
 <%end%>
