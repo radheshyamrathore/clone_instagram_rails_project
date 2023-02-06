@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController # rubocop:disable Style/Documentation
-  def new; end
+  def new
+    if logged_in?
+      flash[:danger] = "you are logged in please log out."
+      redirect_to root_path
+    end
+  end
 
   def create
     @user = User.find_by(email: user_params[:email])
@@ -18,10 +23,13 @@ class SessionsController < ApplicationController # rubocop:disable Style/Documen
   end
 
   def destroy
-    session.delete(:user_id)
-    session[:user_id] = nil
-    flash[:notice] = 'Logged Out'
-    redirect_to '/login'
+    # session.delete(:user_id)
+    # session[:user_id] = nil
+    # debugger
+    # flash[:notice] = 'Logged Out'
+    # redirect_to '/login'
+    log_out
+    redirect_to "/login"
   end
 
   private
