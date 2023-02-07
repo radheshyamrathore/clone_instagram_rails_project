@@ -4,4 +4,5 @@ class User < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :posts
   # has_many :comments, through: :posts
   has_many :likes, through: :posts
+  enum role: %i[user admin]
 end
