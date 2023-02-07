@@ -9,11 +9,6 @@
 <% else current_user != nil %>
 
 <h4 style="color:green;"> <%= @current_user.name %>  login successfully</h4>
-
-<hr>
-  <%= link_to "New Post", new_post_path, {class:"btn btn-success"} %>
-<hr>
-
 <%end%>
 
 <p style="background-color:tomato;">Our blog has <%= @posts.count %> posts</p>
@@ -43,25 +38,25 @@ table{
     </td>
     <%p+=1%>
     <td>
-        <%= post.author_user %><br>
+      <%= post.author_user %><br>
     </td>
     <td>
-        <%= link_to post.body, post %><br>
+      <%= link_to post.body, post %><br>
     </td>
 
     <td>
       <%= post.post_type%><br>
     </td>
     <td>
-    <pre>
-    <% if post.user_id == @current_user.id %>
-    <%= link_to "Edit", edit_post_path(post) %> || <%= link_to "Destroy", post_path(post), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure for delete post?"
-                  } %>
-    </pre>
+      <pre>
+        <% if @current_user.role == 'admin' || post.user_id == @current_user.id %>
+        
+        <%= link_to "Edit", edit_post_path(post),{class:"btn btn-primary"} %> || <%= link_to "Destroy", post_path(post),class:"btn btn-primary",  data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure for delete post?"
+                      } %>
+      </pre>
     </td>
-
 <% end %>
 
 <td>
