@@ -52,6 +52,6 @@ class PostsController < ApplicationController # rubocop:disable Style/Documentat
   private
 
   def post_params
-    params.require(:post).permit(:body, :post_type, :image, :video, :user_id)
+    params.require(:post).permit(:body, :title, :post_type, :image, :video, :user_id)
   end
 end
