@@ -32,7 +32,7 @@ table{
   <% @posts.each do |post| %>
 
     <td>
-      title
+      <%= link_to post.title, post %>
     </td>
   
     <td>

@@ -1,24 +1,30 @@
 <%=form_with model: @post do |form| %>
 
 <div>
-    <%= form.label :body, class:"form-label" %><br>
-    <%= form.text_field :body, class:"form-control" %>
+  <%= form.label :body, class:"form-label" %><br>
+  <%= form.text_field :body, class:"form-control" %>
 </div> 
 
 <div>
-    <%= form.label :post_type, class:"form-label"  %><br>
-    <%= form.text_area :post_type, class:"form-control" %>
+  <%= form.label :title, class:"form-label" %><br>
+  <%= form.text_field :title, class:"form-control" %>
 </div> 
 
 <div>
-<%= form.label :image, class:"form-label"%>
-<%= form.file_field :image, class:"form-control"%>
+  <%= form.label :post_type, class:"form-label"  %><br>
+  <%= form.text_area :post_type, class:"form-control" %>
+</div> 
+
+<div>
+  <%= form.label :image, class:"form-label"%>
+  <%= form.file_field :image, class:"form-control"%>
 </div>
 
 <div>
-<%= form.label :video, class:"form-label" %>
-<%= form.file_field :video, class:"form-control" %>
+  <%= form.label :video, class:"form-label"%>
+  <%= form.file_field :video, class:"form-control"%>
 </div>
+<br>
 
 <div class="col-12">
   <button type="submit" class="btn btn-primary">Submit</button>
